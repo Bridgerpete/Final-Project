@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guess the Number Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .game-container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .number-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .number-buttons button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: #6c63ff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .number-buttons button:hover {
+      background-color: #574fd6;
+    }
+
+    #message {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .score-board {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    #play-again {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+
+    #play-again:hover {
+      background-color: #3e8e41;
+    }
+
+    #guesses-list {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Guess the Number</h1>
+    <p>Pick a number between 1 and 10</p>
+
+    <div class="number-buttons" id="number-buttons">
+      <!-- Number buttons 1-10 will be generated here -->
+    </div>
+
+    <div id="message"></div>
+    <div id="guesses-list">Your guesses: <span id="guesses"></span></div>
+    <button id="play-again">Play Again</button>
+
+    <div class="score-board">
+      Wins: <span id="wins">0</span> | Losses: <span id="losses">0</span>
+    </div>
+  </div>
+
+  <script>
+    const numberButtonsContainer = document.getElementById('number-buttons');
+    const message = document.getElementById('message');
+    const playAgainBtn = document.getElementById('play-again');
+    const winsDisplay = document.getElementById('wins');
+    const lossesDisplay = document.getElementById('losses');
+    const guessesDisplay = document.getElementById('guesses');
+
+    let secretNumber;
+    let guessesLeft;
+    let wins = 0;
+    let losses = 0;
+    let gameOver = false;
+    let currentGuesses = [];
+
+    function initGame() {
+      secretNumber = Math.floor(Math.random() * 10) + 1;
+      guessesLeft = 3;
+      message.textContent = '';
+      currentGuesses = [];
+      guessesDisplay.textContent = '';
+      gameOver = false;
+      playAgainBtn.style.display = 'none';
+      generateButtons();
+    }
+
+    function generateButtons() {
+      numberButtonsContainer.innerHTML = '';
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.addEventListener('click', () => handleGuess(i));
+        numberButtonsContainer.appendChild(btn);
+      }
+    }
+
+    function handleGuess(guess) {
+      if (gameOver) return;
+
+      let feedback = '';
+      if (guess > secretNumber) {
+        feedback = ' (Too high)';
+      } else if (guess < secretNumber) {
+        feedback = ' (Too low)';
+      }
+
+      currentGuesses.push(`${guess}${feedback}`);
+      guessesDisplay.textContent = currentGuesses.join(', ');
+      guessesLeft--;
+
+      if (guess === secretNumber) {
+        message.textContent = '🎉 Congratulations, You Win!';
+        wins++;
+        endGame();
+      } else if (guessesLeft > 0) {
+        message.textContent = `❌ ${guess > secretNumber ? 'Too high' : 'Too low'} - ${guessesLeft} guesses left.`;
+      } else {
+        message.textContent = `💥 You Lose! The number was ${secretNumber}.`;
+        losses++;
+        endGame();
+      }
+    }
+
+    function endGame() {
+      gameOver = true;
+      updateScore();
+      playAgainBtn.style.display = 'inline-block';
+    }
+
+    function updateScore() {
+      winsDisplay.textContent = wins;
+      lossesDisplay.textContent = losses;
+    }
+
+    playAgainBtn.addEventListener('click', initGame);
+
+    // Initialize on first load
+    initGame();
+  </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/scratch.css">
+    <title>Stranger Things</title>
+</head>
+    <body>
+        <div class="nav">
+            <a href="index.html">Home Page</a>
+            <a href="WebApp.html">Mini Game</a>
+            <a href="Tab Stat">Tableau Stats</a>
+        </div>
+        <div class="section">
+        <h1>Stranger Things</h1>
+    <br>
+    <img src="assets/img/Stranger Title.jpg" alt="Title Picture" class="resized-img">
+        </div>
+    <br>
+    <div class="section">
+        <h2>Favorite Seasons, Favorite to Least Favorite</h2>
+        <ol>
+            <img src="assets/img/Stranger 3.jpg" alt="Season 3" class="resized-img">
+            <br>
+            <li>Season 3</li>
+                <ul>
+                    <li>Best single-season plot development</li>
+                    <li>Iconic 80's vibe hits hardest this season</li>
+                    <li>Good horror factor without being disturbing</li>
+                </ul>
+                <img src="assets/img/Stranger 4.jpeg" alt="Season 4" class="resized-img">
+                <br>
+            <li>Season 4</li>
+                <ul>
+                    <li>Best multi-season plot development</li>
+                    <li>Shocking plot twists</li>
+                    <li>Weaker plotline with the Byer group</li>
+                </ul>
+                <img src="assets/img/Stranger 1.webp" alt="Season 1" class="resized-img">
+            <br>
+            <li>Season 1</li>
+                <ul>
+                    <li>Great mystery aspect</li>
+                    <li>Nostalgic value: 10/10</li>
+                    <li>Fewer insane plot twists, but by no means weak</li>
+                </ul>
+            <img src="assets/img/Stranger 2.webp" alt="Season 2" class="resized-img">
+            <br>
+            <li>Season 2</li>
+                <ul>
+                    <li>Great friendship devloplment between characters</li>
+                    <li>Plotlines diverge too much, but are overall super well written</li>
+                    <li>Includes by far the worst episode of all Stranger Things</li>
+                </ul>
+        </ol>
+    </div>
+
+        <div class="video-container">
+            <H2>This is the most unexpected moment of all Stranger Things</H2>
+            <br>
+            <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/O5HQ1sZseKg" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2 id="Tab Stat">Interactive Stranger Things Tableau Dashboard</h2>
+
+<div class="tableau-embed">
+    <div class='tableauPlaceholder' id='viz1745041804711' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img alt='Dashboard 1' src='https://public.tableau.com/static/images/TM/TM7MBYBW6/1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='path' value='shared&#47;TM7MBYBW6' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/TM/TM7MBYBW6/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+</div>
+
+<script type='text/javascript'>
+    var divElement = document.getElementById('viz1745041804711');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    if (divElement.offsetWidth > 800) {
+        vizElement.style.width = '1200px';
+        vizElement.style.height = '3987px';
+    } else if (divElement.offsetWidth > 500) {
+        vizElement.style.width = '1200px';
+        vizElement.style.height = '3987px';
+    } else {
+        vizElement.style.width = '100%';
+        vizElement.style.height = '3527px';
+    }
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+
+    </body>
+</html>
